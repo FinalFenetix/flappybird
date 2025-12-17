@@ -11,5 +11,15 @@ config_version=5
 [application]
 
 config/name="flappyBird"
+run/main_scene="uid://bw4laaqqwx4hx"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+run/size/mode=0
+run/size/viewport_height=648
+run/size/viewport_width=1152
+
+[display]
+
+window/size/viewport_width=240
+window/size/viewport_height=135
+window/size/mode=3

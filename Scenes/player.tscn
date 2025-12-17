@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw4laaqqwx4hx"]
+
+[ext_resource type="Script" uid="uid://cktclgv0o262j" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://l0omd3hkdpbm" path="res://StateMachine/fsm.gd" id="2_6t5aa"]
+[ext_resource type="Script" uid="uid://062e8wyq7htg" path="res://Scripts/jump.gd" id="3_vgqql"]
+[ext_resource type="Script" uid="uid://b72l1k7jb7yy4" path="res://Scripts/fall.gd" id="4_fkybt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_v0iea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v0iea")
+
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("2_6t5aa")
+starting_state = NodePath("fall")
+
+[node name="jump" type="Node" parent="FSM"]
+script = ExtResource("3_vgqql")
+animation_name = "jump"
+metadata/_custom_type_script = "uid://cbss02w8anaj1"
+
+[node name="fall" type="Node" parent="FSM"]
+script = ExtResource("4_fkybt")
+animation_name = "fall"
+metadata/_custom_type_script = "uid://cbss02w8anaj1"
