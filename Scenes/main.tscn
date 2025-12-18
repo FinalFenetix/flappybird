@@ -15,8 +15,28 @@ autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="Control" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Camera2D/Control"]
+layout_mode = 0
+offset_left = -114.0
+offset_top = -62.999996
+offset_right = -74.0
+offset_bottom = -39.999996
+scale = Vector2(1.1583245, 0.90452397)
+
 [node name="killbox" parent="." instance=ExtResource("2_bo1nx")]
 position = Vector2(0, 103)
+scale = Vector2(15.12, 1)
+
+[node name="killbox2" parent="." instance=ExtResource("2_bo1nx")]
+position = Vector2(0, -105)
 scale = Vector2(15.12, 1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

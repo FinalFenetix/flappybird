@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqpptlifrvlwm"]
+
+[ext_resource type="Script" uid="uid://bx5vc6s5u1qor" path="res://Scripts/scorebox.gd" id="1_w0htx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0htx"]
+
+[node name="Scorebox" type="Area2D"]
+script = ExtResource("1_w0htx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_w0htx")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

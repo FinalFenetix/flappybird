@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2uxjos6pd7j5"]
+[gd_scene load_steps=6 format=3 uid="uid://b2uxjos6pd7j5"]
 
 [ext_resource type="Script" uid="uid://b70xry0yl7ayr" path="res://Scenes/pipes.gd" id="1_7ktcp"]
 [ext_resource type="PackedScene" uid="uid://bt51j1bi6v43a" path="res://Scenes/killbox.tscn" id="1_uhra5"]
+[ext_resource type="PackedScene" uid="uid://cqpptlifrvlwm" path="res://Scenes/scorebox.tscn" id="3_ws3sl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_41b8k"]
 
@@ -28,3 +29,7 @@ scale = Vector2(1, 11.320001)
 [node name="killbox2" parent="." instance=ExtResource("1_uhra5")]
 position = Vector2(10, 195)
 scale = Vector2(1, 10.2)
+
+[node name="Scorebox" parent="." instance=ExtResource("3_ws3sl")]
+position = Vector2(29, 65.00001)
+scale = Vector2(0.15199095, 2.3174803)
