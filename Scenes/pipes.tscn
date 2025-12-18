@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2uxjos6pd7j5"]
+
+[ext_resource type="Script" uid="uid://b70xry0yl7ayr" path="res://Scenes/pipes.gd" id="1_7ktcp"]
+[ext_resource type="PackedScene" uid="uid://bt51j1bi6v43a" path="res://Scenes/killbox.tscn" id="1_uhra5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_41b8k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uhra5"]
+
+[node name="Pipes" type="Node2D"]
+position = Vector2(0, 22)
+script = ExtResource("1_7ktcp")
+
+[node name="pipeBottom" type="MeshInstance2D" parent="."]
+position = Vector2(10, 192.99998)
+scale = Vector2(20, 200)
+mesh = SubResource("BoxMesh_41b8k")
+
+[node name="pipeTop" type="MeshInstance2D" parent="."]
+position = Vector2(10, -61)
+scale = Vector2(20, 200)
+mesh = SubResource("BoxMesh_uhra5")
+
+[node name="killbox" parent="." instance=ExtResource("1_uhra5")]
+position = Vector2(10, -74)
+scale = Vector2(1, 11.320001)
+
+[node name="killbox2" parent="." instance=ExtResource("1_uhra5")]
+position = Vector2(10, 195)
+scale = Vector2(1, 10.2)

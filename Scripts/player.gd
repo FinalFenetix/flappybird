@@ -1,22 +1,14 @@
 class_name Player
 extends CharacterBody2D
 
-@onready
-var animations = $animations
+@export
+var jumpVel : float
 
-@onready
-var state_machine = $FSM
-
-func _ready() -> void:
-	# Initialize the state machine, passing a reference of the player to the states,
-	# that way they can move and react accordingly
-	state_machine.init(self)
-
-func _unhandled_input(event: InputEvent) -> void:
-	state_machine.process_input(event)
+const gravity = 900
 
 func _physics_process(delta: float) -> void:
-	state_machine.process_physics(delta)
-
-func _process(delta: float) -> void:
-	state_machine.process_frame(delta)
+	if Input.is_action_just_pressed("jump"):
+		velocity.y = jumpVel
+	
+	velocity.y += gravity * delta
+	move_and_slide()
