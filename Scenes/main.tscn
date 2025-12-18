@@ -12,14 +12,18 @@ wait_time = 3.0
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
+gravity = 850
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Control" type="Control" parent="Camera2D"]
+z_index = 6
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
