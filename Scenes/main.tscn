@@ -1,11 +1,76 @@
-[gd_scene load_steps=4 format=3 uid="uid://djjw3nsl0e7mv"]
+[gd_scene load_steps=15 format=3 uid="uid://djjw3nsl0e7mv"]
 
 [ext_resource type="PackedScene" uid="uid://bw4laaqqwx4hx" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://c64ymnlm3inkl" path="res://Scenes/main.gd" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://bt51j1bi6v43a" path="res://Scenes/killbox.tscn" id="2_bo1nx"]
+[ext_resource type="FontFile" uid="uid://t8r5qej5pirl" path="res://Assets/Minecraft.ttf" id="3_hptm8"]
+[ext_resource type="Texture2D" uid="uid://colvj4tjrhfa6" path="res://Assets/qNormal.png" id="3_ynf5e"]
+[ext_resource type="Script" uid="uid://g4fkhqwccap4" path="res://Scripts/audio_stream_player.gd" id="4_6bp64"]
+[ext_resource type="Texture2D" uid="uid://bycfo48ui0c8q" path="res://Assets/qPressed.png" id="4_hptm8"]
+[ext_resource type="AudioStream" uid="uid://ch24l7fx14gkj" path="res://Assets/music/chase.mp3" id="5_344ge"]
+[ext_resource type="AudioStream" uid="uid://e3g7eadqhsen" path="res://Assets/music/flightAction.mp3" id="6_ynf5e"]
+[ext_resource type="AudioStream" uid="uid://356ed7djp3cl" path="res://Assets/music/prepareForTakeoff.mp3" id="7_hptm8"]
+[ext_resource type="Texture2D" uid="uid://dtdj5bv3674m3" path="res://Assets/bNormal.png" id="11_6iyac"]
+[ext_resource type="Script" uid="uid://c8tpeawx5ssn8" path="res://Scripts/death_screen.gd" id="11_fdnlq"]
+[ext_resource type="Texture2D" uid="uid://nacccx82jxr3" path="res://Assets/bPressed.png" id="12_fdnlq"]
+[ext_resource type="AudioStream" uid="uid://dolg3iskfwo81" path="res://Assets/music/Peaceful Afternoon.mp3" id="14_jkdf5"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jjvhh")
+
+[node name="deathScreen" type="Control" parent="."]
+process_mode = 3
+z_index = 13
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_fdnlq")
+
+[node name="ColorRect" type="ColorRect" parent="deathScreen"]
+layout_mode = 0
+offset_left = -136.0
+offset_top = -76.0
+offset_right = 132.0
+offset_bottom = 75.0
+color = Color(0, 0, 0, 0.57254905)
+
+[node name="Label" type="Label" parent="deathScreen"]
+layout_mode = 0
+offset_left = -136.0
+offset_top = -42.0
+offset_right = 136.0
+offset_bottom = -7.0
+text = "You died! 
+All the trees are gone now."
+horizontal_alignment = 1
+
+[node name="playButton" type="TextureButton" parent="deathScreen"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = 30.0
+offset_bottom = 46.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("11_6iyac")
+texture_pressed = ExtResource("12_fdnlq")
+
+[node name="score" type="Label" parent="deathScreen"]
+layout_mode = 0
+offset_left = -95.0
+offset_top = 3.0
+offset_right = -49.0
+offset_bottom = 19.0
+text = "Score"
+
+[node name="highscore" type="Label" parent="deathScreen"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 2.0
+offset_right = 85.0
+offset_bottom = 18.0
+text = "highscore"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
@@ -34,6 +99,17 @@ offset_top = -62.999996
 offset_right = -74.0
 offset_bottom = -39.999996
 scale = Vector2(1.1583245, 0.90452397)
+theme_override_fonts/font = ExtResource("3_hptm8")
+
+[node name="quitButton" type="TextureButton" parent="Camera2D/Control"]
+process_mode = 3
+layout_mode = 0
+offset_left = 82.0
+offset_top = -63.0
+offset_right = 112.0
+offset_bottom = -47.0
+texture_normal = ExtResource("3_ynf5e")
+texture_pressed = ExtResource("4_hptm8")
 
 [node name="killbox" parent="." instance=ExtResource("2_bo1nx")]
 position = Vector2(0, 103)
@@ -43,4 +119,10 @@ scale = Vector2(15.12, 1)
 position = Vector2(0, -105)
 scale = Vector2(15.12, 1)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("4_6bp64")
+tracks = Array[AudioStream]([ExtResource("5_344ge"), ExtResource("6_ynf5e"), ExtResource("7_hptm8"), ExtResource("14_jkdf5")])
+
+[connection signal="pressed" from="deathScreen/playButton" to="." method="_on_play_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Camera2D/Control/quitButton" to="." method="_on_quit_button_pressed"]
