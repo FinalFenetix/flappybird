@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2uxjos6pd7j5"]
+
+[ext_resource type="Script" uid="uid://b70xry0yl7ayr" path="res://Scenes/pipes.gd" id="1_7ktcp"]
+[ext_resource type="PackedScene" uid="uid://bt51j1bi6v43a" path="res://Scenes/killbox.tscn" id="1_uhra5"]
+[ext_resource type="Texture2D" uid="uid://drnuijjr4p3k6" path="res://Assets/pipe.png" id="2_l3813"]
+[ext_resource type="PackedScene" uid="uid://cqpptlifrvlwm" path="res://Scenes/scorebox.tscn" id="3_ws3sl"]
+
+[node name="Pipes" type="Node2D"]
+position = Vector2(0, 22)
+script = ExtResource("1_7ktcp")
+
+[node name="PipeBottom" type="Sprite2D" parent="."]
+position = Vector2(10, 143)
+texture = ExtResource("2_l3813")
+
+[node name="PipeTop" type="Sprite2D" parent="."]
+position = Vector2(10, -11)
+scale = Vector2(1, -1)
+texture = ExtResource("2_l3813")
+
+[node name="killbox" parent="." instance=ExtResource("1_uhra5")]
+position = Vector2(10, -74)
+scale = Vector2(1, 11.320001)
+
+[node name="killbox2" parent="." instance=ExtResource("1_uhra5")]
+position = Vector2(10, 195)
+scale = Vector2(1, 10.2)
+
+[node name="Scorebox" parent="." instance=ExtResource("3_ws3sl")]
+position = Vector2(29, 65.00001)
+scale = Vector2(0.15199095, 2.3174803)

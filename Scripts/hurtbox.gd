@@ -1,0 +1,6 @@
+extends Area2D
+class_name hurtbox
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is killbox:
+		get_tree().current_scene.died()

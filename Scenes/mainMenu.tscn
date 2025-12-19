@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmyj58owsjniw"]
+
+[ext_resource type="Script" uid="uid://ddvt8ifos2f54" path="res://Scripts/main_menu.gd" id="1_v10og"]
+[ext_resource type="Texture2D" uid="uid://dtdj5bv3674m3" path="res://Assets/bNormal.png" id="2_kqm77"]
+[ext_resource type="Texture2D" uid="uid://nacccx82jxr3" path="res://Assets/bPressed.png" id="3_snj4n"]
+[ext_resource type="Texture2D" uid="uid://colvj4tjrhfa6" path="res://Assets/qNormal.png" id="4_wofhc"]
+[ext_resource type="Texture2D" uid="uid://bycfo48ui0c8q" path="res://Assets/qPressed.png" id="5_qmf6k"]
+[ext_resource type="AudioStream" uid="uid://bxw2xbguxn7im" path="res://Assets/music/flappyTale.mp3" id="6_rn1t7"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_v10og")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="playButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_kqm77")
+texture_pressed = ExtResource("3_snj4n")
+
+[node name="quitButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_wofhc")
+texture_pressed = ExtResource("5_qmf6k")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_rn1t7")
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/playButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/quitButton" to="." method="_on_quit_button_pressed"]
